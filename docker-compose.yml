@@ -1,0 +1,19 @@
+services:
+  mysagra-customer-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mysagra-customer-app
+    restart: always
+    ports:
+      - "3030:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    networks:
+      - mysagra_default
+
+networks:
+  mysagra_default:
+    external: true
